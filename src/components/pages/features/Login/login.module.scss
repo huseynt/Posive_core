@@ -1,0 +1,20 @@
+@import '../../../common/reUseable/mixin';
+@import '../../../common/reUseable/variable';
+@import '../../../common/reUseable/theme';
+
+.login {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    
+    @include mobile {
+        grid-template-columns: 1fr;
+    }
+
+    @include themed {
+        background-color: t(white);
+    }
+}
+
+

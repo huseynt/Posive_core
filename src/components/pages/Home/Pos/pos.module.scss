@@ -1,0 +1,432 @@
+@import "../../../common/reUseable/variable";
+@import "../../../common/reUseable/mixin";
+@import "../../../common/reUseable/extend";
+@import "../../../common/reUseable/theme";
+
+
+@keyframes searchOpen {
+    from {
+        transform: translateY(-200%);
+        z-index: -9;
+        opacity: 0;
+        height: 0;
+    }
+    to {
+        transform: translateY(0);
+        z-index: 1;
+        opacity: 1;
+        height: 40px;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.overflow {
+    width: 100%;
+    max-width: 1920px;
+    height: 100vh;
+    // background-color: $light_bg_gray;
+    overflow-y:scroll; 
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    transition: all 0.3s linear;
+
+
+    @include themed() {
+        background-color: t(light_bg_gray);
+      }
+}
+.overflow::-webkit-scrollbar {
+    display: none;
+}
+
+
+.main {
+    width: 100%;
+    padding: 20px 2% 2% 2%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+    transition: all 0.3s linear;
+
+    @include themed() {
+        background-color: t(light_bg_gray);
+      }
+
+    @include mobile {
+        padding: 3% 3% 30% 3%;
+    }
+
+    // ---------------- up --------------------------
+    &_up {
+        display: flex;
+        animation: fadeIn 0.3s;
+
+        @include mobile {
+            display: none;
+        }
+
+        &_search {
+            position: relative;
+            max-width: 500px;
+            width: 100%;
+            margin-right: auto;
+            padding: 0;
+            border-radius: 10px;
+            background-color: $white;
+            border: 1px solid;
+
+            @include themed() {
+                background-color: t(white);
+                border-color: t(gray);
+              }
+        }
+
+        &_bag {
+            padding: 10px 13px;
+            border-radius: 10px;
+            border: 1px solid;
+            margin-left: 16px;
+
+            @include themed() {
+                background-color: t(white);
+                border-color: t(gray);
+              }
+
+            svg {
+                path {
+                    @include themed() {
+                        stroke: t(black);
+                      }
+                }
+            }
+
+            &:hover {
+                background-color: $main_light_two !important;
+
+                svg {
+                    path {
+                        stroke: $main_color !important;
+                    }
+                }
+            }
+        }
+
+        &_notification {
+            padding: 10px 13px;
+            background-color: $white;
+            margin-left: 16px;
+            border-radius: 10px;
+            border: 1px solid;
+            z-index: 9991;
+
+            @include themed() {
+                background-color: t(white);
+                border-color: t(gray);
+              }
+
+            svg {
+                path {
+                    @include themed() {
+                        stroke: t(black);
+                      }
+                }
+            }
+
+            &:hover {
+                background-color: $main_light_two !important;
+
+                svg {
+                    path {
+                        stroke: $main_color !important;
+                    }
+                }
+            }
+        }
+    }
+
+    // ------------------ mobile up -------------------------
+    &_mobileUp {
+        display: flex;
+        flex-direction: column;
+        row-gap: 16px;
+
+        @include desktop {
+            display: none;
+        }
+
+        &_actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 5px;
+
+            &_menu {
+                padding: 12px 13px;
+                border-radius: 7px;
+                border: 1px solid;
+                user-select: none;
+                cursor: pointer;
+
+                @include themed() {
+                    background-color: t(white);
+                    border-color: t(gray);
+                  }
+
+                svg {
+                    width: 20px;
+                    height: 20px;
+
+                    path {
+                        @include themed() {
+                            stroke: t(black);
+                          }
+                    }
+                }
+            }
+    
+            &_right {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                column-gap: 14px;
+    
+                &_search {
+                    padding: 12px;
+                    border-radius: 7px;
+                    border: 1px solid;
+                    user-select: none;
+                    cursor: pointer;
+
+                    @include themed() {
+                        background-color: t(white);
+                        border-color: t(gray);
+                      }
+                      svg {
+                        path {
+                            @include themed() {
+                                stroke: t(black);
+                              }
+                        }
+                    }
+                }
+    
+                &_setting {
+                    padding: 12px;
+                    border-radius: 7px;
+                    border: 1px solid;
+                    user-select: none;
+                    cursor: pointer;
+
+                    @include themed() {
+                        background-color: t(white);
+                        border-color: t(gray);
+                      }
+                      svg {
+                        path {
+                            @include themed() {
+                                stroke: t(black);
+                              }
+                        }
+                    }
+                }
+            }
+        }
+
+        &_down {
+            
+            position: relative;
+            transition: all 0.3s;
+            animation: searchOpen 0.3s;
+            transition: .3s ease-in-out;
+            border: 1px solid;
+            border-radius: 10px;
+
+            @include themed() {
+                background-color: t(white);
+                border-color: t(gray);
+              }
+        }
+    }
+
+    // ---------------- filter --------------------------
+
+    &_filter {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        column-gap: 16px;
+        animation: fadeIn 0.5s;
+
+
+        @include mobile {
+            overflow-x: scroll;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+
+        
+
+        &_option {
+            width: 100%;
+            max-width: 500px;
+            min-width: 160px;
+            padding: 12px;
+            border-radius: 7px;
+            display: flex;
+            flex-direction: column;
+            row-gap: 12px;
+            cursor: pointer;
+            border: 1px solid;
+            user-select: none;
+
+            background: linear-gradient(90deg, $main_color 50%, transparent 50%);
+            transition: 0.4s ease-out;
+            background-size: 205% 100%;
+            background-position: 99% 0;
+
+
+            @include themed() {
+                background-color: t(white);
+                border-color: t(gray);
+            }
+
+            svg {
+                path {
+                    @include themed() {
+                        fill: t($black) ;
+                    }
+                }
+            }
+
+            @include desktop {
+                &:hover {
+                    background-position: 0 0;                    
+    
+                    svg {
+                        path {
+                            fill: $white !important;
+                            transition: fill 0.5s ease-out;
+                        }
+                    }
+                    
+                    h4 {
+                        color: $white !important;
+                        transition: color 0.5s ease-out;
+                    }
+                    p {
+                        color: $white !important;
+                        transition: color 0.5s ease-out;
+                    }
+    
+                }
+            }
+
+
+            @include mobile {
+                flex-direction: row;
+                column-gap: 8px;
+                justify-content: center;
+
+                svg {
+                    width: 15px;
+                }
+            }
+
+            div {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                @include mobile {
+                    display: block;
+                }
+
+                h4 {
+                    @extend %sm_b;
+                    @include themed() {
+                        color: t($black);
+                    }
+                }
+                p {
+                    @extend %s;
+                    @include themed() {
+                        color: t($black);
+                    }
+                    @include mobile {
+                        display: none;
+                    }
+                }
+            }
+
+            
+
+            
+
+            
+        }
+    }
+
+    // ------------------ products ----------------------------
+    &_meals {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        column-gap: 16px;
+        row-gap: 24px;
+
+        @include mobile {
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        }
+    }
+
+    // ------------------ for mobile coninue -------------------
+    &_continue {
+        width: 100%;
+        height: auto;
+        position: fixed;
+        bottom: -1px;
+        left: 0;
+        padding: 4%;
+
+        @include themed() {
+            background-color: t(light_bg_gray);
+        }
+
+        @include desktop {
+            display: none;
+        }
+
+        &_btn {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: $main_color;
+            border: 1px solid $gray;
+            color: $white;
+            @extend %m_b;
+
+            @include themed() {
+                background-color: t(main_color);
+                border-color: t(gray);
+                color: t(white);
+            }
+        }
+    }
+}

@@ -1,0 +1,244 @@
+@import "variable";
+@import "theme";
+
+%ex_s {
+  font-family: "Manrope", sans-serif;
+  font-size: 0.6rem; //11px
+  font-weight: 500;
+}
+
+%ex_s_b {
+  font-family: "Manrope", sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+}
+
+%s {
+  font-family: "Manrope", sans-serif;
+  font-size: 0.75rem; //12px
+  font-weight: 500;
+}
+
+%s_b {
+  font-family: "Manrope", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+%sm {
+  font-family: "Manrope", sans-serif;
+  font-size: 0.9rem; //14px
+  font-weight: 500;
+}
+
+%sm_b {
+  font-family: "Manrope", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+%m {
+  font-family: "Manrope", sans-serif;
+  font-size: 1rem; //16px
+  font-weight: 500;
+}
+%m_b {
+  font-family: "Manrope", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+%sl {
+  font-family: "Manrope", sans-serif;
+  font-size: 1.125rem; //18px
+  font-weight: 500;
+}
+%sl_b {
+  font-family: "Manrope", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+%ml {
+  font-family: "Manrope", sans-serif;
+  font-size: 1.25rem; //20px
+  font-weight: 500;
+}
+
+%ml_b {
+  font-family: "Manrope", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+%ls {
+  font-family: "Manrope", sans-serif;
+  font-size: 1.5rem; //24px
+  font-weight: 500;
+}
+%ls_b {
+  font-family: "Manrope", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+%l {
+  font-family: "Manrope", sans-serif;
+  font-size: 2rem; //32px
+  font-weight: 500;
+}
+%l_b {
+  font-family: "Manrope", sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+%lm {
+  font-family: "Manrope", sans-serif;
+  font-size: 2.125rem; //36px
+  font-weight: 500;
+}
+
+%lm_b {
+  font-family: "Manrope", sans-serif;
+  font-size: 2.125rem; //36px
+  font-weight: 700;
+}
+
+%xl {
+  font-family: "Manrope", sans-serif;
+  font-size: 2.25rem; //36px
+  font-weight: 500;
+}
+
+%xl_b {
+  font-family: "Manrope", sans-serif;
+  font-size: 2.25rem;
+  font-weight: 700;
+}
+
+%extra {
+  font-family: "Manrope", sans-serif;
+  font-size: 4.50rem;
+  font-weight: 700;
+}
+
+%extra_b {
+  font-family: "Manrope", sans-serif;
+  font-size: 4.50rem;
+  font-weight: 700;
+}
+
+// ----------------- Label -----------------
+%label_focus {
+  top: -26%;
+  left: 3%;
+  font-size: 0.75rem; //12px
+  padding: 0 5px;
+  z-index: 3;
+  position: absolute;
+  transition: all 0.3s ease-in-out;
+  border-radius: 8px;
+
+  @include themed() {
+    color: t(main_color);
+    background-color: t(white);
+  }
+}
+
+%label_unset {
+  position: absolute;
+  top: 18%;
+  left: 5%;
+  transition: all 0.3s ease-in-out;
+  // z-index: -1;
+  pointer-events: none;
+
+
+  @include themed() {
+    color: t(black);
+  }
+}
+
+------------------- for change login and register -------------------
+  %rightChange {
+  @keyframes load {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
+
+%leftChange_on {
+  @keyframes load {
+    from {
+      transform: translateX(100%);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
+
+// ----------------- for text overflow -----------------
+%text_overflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// ----------------- button -----------------
+%btn_main {
+  padding: 7px 30px;
+  border-radius: 10px;
+  @extend %m_b;
+  user-select: none;
+  cursor: pointer;
+  white-space: nowrap;
+  color: $white;
+
+
+  @include themed() {
+    background-color: t(main_color);
+  }
+
+  &:hover {
+    @include themed {
+      background-color: t(main_color_dark);
+    }
+  }
+}
+
+%btn_main_w {
+  padding: 7px 30px;
+  border-radius: 10px;
+  @extend %m_b;
+  user-select: none;
+  cursor: pointer;
+  white-space: nowrap;
+
+  @include themed() {
+    background-color: t(white);
+    color: t(black);
+    border: 1px solid t(gray);
+  }
+
+  &:hover {
+    // background-color: $main_light_two;
+    // color: $black;
+
+    // path {
+    //   stroke: $black;
+    // }
+    @include themed() {
+      box-shadow: 0 0 5px 0 t(black_light);
+    }
+  }
+}

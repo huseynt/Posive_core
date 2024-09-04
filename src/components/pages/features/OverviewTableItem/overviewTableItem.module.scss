@@ -1,0 +1,82 @@
+@import "../../../common/reUseable/variable";
+@import "../../../common/reUseable/mixin";
+@import "../../../common/reUseable/extend";
+@import "../../../common/reUseable/theme";
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+.tr {
+    background-color: $white;
+    animation: fadeIn 0.5s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $main_light_two;
+    }
+
+    td {
+        max-width: 300px;
+        text-align: left;
+        padding: 7px 1%;
+        @extend %sm, %text_overflow;
+
+        input[type="checkbox"] {
+            accent-color: $main_color;
+            width: 15px;
+            height: 15px;
+        }
+
+        @include mobile {
+            padding: 7px 5px;
+        }
+    }
+
+    &_desktop {
+
+        @include mobile {
+            display: none;
+        }
+
+        &_payment {
+            width: fit-content;
+            min-width: 95px;
+            padding: 2px 7px;
+            border-radius: 4px;
+            background-color: $light_bg_gray;
+            text-align: center;
+        }
+    }
+
+    &_actions {
+        width: fit-content;
+        display: flex;
+        align-items: center;
+        column-gap: 5px;
+
+        &_option {
+            padding: 7px;
+            border-radius: 8px;
+            transition: background-color 0.1s ease-in-out;
+
+            &:hover {
+                background-color: darken(#868686a9, 30%) !important; 
+            }
+        }
+    }
+
+    &_mobileDate {
+        @extend %text_overflow;
+
+        @include mobile {
+            max-width: 100px !important;
+        }
+    }
+}
